@@ -15,6 +15,7 @@ for p in sorted((root / 'assets').rglob('*')):
 h = hashlib.sha256()
 for a in assets[1:]:
     h.update((root / a).read_bytes())
+h.update((root / 'sw.template.js').read_bytes())
 version = h.hexdigest()[:10]
 sw = (root / 'sw.template.js').read_text().replace('%%VERSION%%', version).replace('%%ASSETS%%', json.dumps(assets, indent=2))
 (root / 'sw.js').write_text(sw)

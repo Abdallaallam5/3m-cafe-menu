@@ -1,6 +1,6 @@
 /* 3M cafe — service worker
    Bump CACHE_VERSION (build.py does it automatically) whenever the menu or assets change. */
-const CACHE_VERSION = 'd27a677d6f';
+const CACHE_VERSION = 'c88ad99392';
 const CACHE = `3m-cafe-${CACHE_VERSION}`;
 const PRECACHE = [
   "./",
