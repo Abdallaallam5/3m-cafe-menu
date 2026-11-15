@@ -12,12 +12,13 @@ self.addEventListener('install', (event) => {
   if (!self.registration.active) self.skipWaiting();
 });
 
+const dropOldCaches = () => caches.keys()
+  .then((keys) => Promise.all(keys.filter((k) => k.startsWith('3m-cafe-') && k !== CACHE).map((k) => caches.delete(k))));
+// Always read from THIS version's cache only (never from an older version's leftovers).
+const fromCache = (req) => caches.open(CACHE).then((c) => c.match(req, { ignoreSearch: true }));
+
 self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k.startsWith('3m-cafe-') && k !== CACHE).map((k) => caches.delete(k))))
-      .then(() => self.clients.claim())
-  );
+  event.waitUntil(dropOldCaches().then(() => self.clients.claim()));
 });
 
 self.addEventListener('message', (event) => {
@@ -37,9 +38,10 @@ self.addEventListener('fetch', (event) => {
         .then((res) => {
           const copy = res.clone();
           caches.open(CACHE).then((c) => c.put('./index.html', copy));
+          dropOldCaches();
           return res;
         })
-        .catch(() => caches.match('./index.html', { ignoreSearch: true }).then((r) => r || caches.match('./')))
+        .catch(() => fromCache('./index.html').then((r) => r || fromCache('./')))
     );
     return;
   }
@@ -59,7 +61,7 @@ self.addEventListener('fetch', (event) => {
 
   // Static assets: cache first.
   event.respondWith(
-    caches.match(req, { ignoreSearch: true }).then((cached) =>
+    fromCache(req).then((cached) =>
       cached || fetch(req).then((res) => {
         if (res.ok && res.type === 'basic') {
           const copy = res.clone();
