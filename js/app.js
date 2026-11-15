@@ -271,9 +271,11 @@
         // check for a new menu version when the app comes back to the foreground
         document.addEventListener('visibilitychange', () => { if (!document.hidden) reg.update().catch(() => {}); });
       }).catch(() => {});
+      // Reload only when an existing worker is replaced (user tapped "تحديث"), never on the very first install.
+      const hadController = !!navigator.serviceWorker.controller;
       let refreshing = false;
       navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (refreshing) return;
+        if (refreshing || !hadController) return;
         refreshing = true;
         location.reload();
       });
