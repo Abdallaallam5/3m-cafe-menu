@@ -24,6 +24,7 @@
 <link rel="preload" href="assets/fonts/cairo-arabic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/logo-520.webp" as="image" type="image/webp">
 <link rel="stylesheet" href="css/styles.css">
+<script>try{if(localStorage.getItem("lang")==="en"){document.documentElement.lang="en";document.documentElement.dir="ltr"}}catch(e){}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"3M cafe","slogan":"Good Vibes... Great Coffee","servesCuisine":["Coffee","Lebanese"],"hasMenu":"#menu","image":"assets/img/logo.png"}</script>
 </head>
 <body class="is-loading">
@@ -80,11 +81,13 @@
   <p class="loader__text">3M <span>cafe</span></p>
 </div>
 
-<a class="skip" href="#menu">انتقل للمنيو</a>
+<a class="skip" href="#menu" data-i18n="skip">انتقل للمنيو</a>
+
+<button type="button" class="lang-btn" id="langBtn" aria-label="Switch to English" lang="en">EN</button>
 
 <!-- Offline / update / install toasts -->
-<div class="pill pill--offline" id="offlinePill" hidden><svg class="ico"><use href="#i-wifi-off"/></svg><span>أنت غير متصل — المنيو يعمل من النسخة المحفوظة</span></div>
-<div class="toast" id="updateToast" hidden><span>نسخة جديدة من المنيو متاحة</span><button type="button" id="updateBtn">تحديث</button></div>
+<div class="pill pill--offline" id="offlinePill" hidden><svg class="ico"><use href="#i-wifi-off"/></svg><span data-i18n="offline">أنت غير متصل — المنيو يعمل من النسخة المحفوظة</span></div>
+<div class="toast" id="updateToast" hidden><span data-i18n="updateMsg">نسخة جديدة من المنيو متاحة</span><button type="button" id="updateBtn" data-i18n="update">تحديث</button></div>
 
 <header class="hero" id="top">
   <div class="hero__sun" aria-hidden="true"></div>
@@ -109,11 +112,11 @@
       <svg class="hero__logo-steam" viewBox="0 0 60 90" aria-hidden="true"><use href="#steam"/></svg>
       <img class="hero__logo" src="assets/img/logo-520.webp" srcset="assets/img/logo-260.webp 260w, assets/img/logo-520.webp 520w" sizes="(max-width: 600px) 220px, 280px" width="520" height="531" alt="3M cafe" fetchpriority="high">
     </div>
-    <h1 class="hero__title"><span class="sr-only">3M cafe — </span>ليالي بيروت</h1>
+    <h1 class="hero__title"><span class="sr-only">3M cafe — </span><span data-i18n="nights">ليالي بيروت</span></h1>
     <p class="hero__script" lang="en" dir="ltr">Good Vibes... Great Coffee</p>
     <a class="plaque-btn" href="#categories">
-      <span class="plaque-btn__ar">استكشف المنيو</span>
-      <span class="plaque-btn__en" lang="en">Explore Our Menu</span>
+      <span class="plaque-btn__ar" data-i18n="explore">استكشف المنيو</span>
+      <span class="plaque-btn__en" data-i18n="exploreSub">Explore Our Menu</span>
     </a>
   </div>
 
@@ -121,14 +124,14 @@
     <img src="assets/img/hero-scene.webp" width="900" height="322" alt="دلة قهوة نحاسية وفنجان قهوة لبناني وحبوب البن" fetchpriority="high">
     <svg class="hero__scene-steam" viewBox="0 0 60 90" aria-hidden="true"><use href="#steam"/></svg>
   </div>
-  <a class="scroll-cue" href="#categories" aria-label="انزل للأقسام"><span></span></a>
+  <a class="scroll-cue" href="#categories" aria-label="انزل للأقسام" data-i18n-aria="scrollDown"><span></span></a>
 </header>
 
 <main id="menu">
   <section class="cats" id="categories" aria-labelledby="catsTitle">
     <div class="ornament-title">
-      <h2 id="catsTitle">الأقسام</h2>
-      <p lang="en">Our Menu</p>
+      <h2 id="catsTitle" data-i18n="cats">الأقسام</h2>
+      <p data-i18n="catsSub">Our Menu</p>
     </div>
     <div class="cats__grid" id="catsGrid"></div>
   </section>
@@ -137,32 +140,32 @@
     <div class="toolbar__inner">
       <label class="search">
         <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
-        <span class="sr-only">ابحث في المنيو</span>
-        <input id="search" type="search" placeholder="ابحث عن مشروب أو صنف…" autocomplete="off" enterkeyhint="search">
-        <button type="button" class="search__clear" id="searchClear" aria-label="مسح البحث" hidden><svg class="ico"><use href="#i-x"/></svg></button>
+        <span class="sr-only" data-i18n="searchLabel">ابحث في المنيو</span>
+        <input id="search" type="search" placeholder="ابحث عن مشروب أو صنف…" data-i18n-ph="searchPh" autocomplete="off" enterkeyhint="search">
+        <button type="button" class="search__clear" id="searchClear" aria-label="مسح البحث" data-i18n-aria="clear" hidden><svg class="ico"><use href="#i-x"/></svg></button>
       </label>
       <nav class="chips" id="chips" aria-label="أقسام المنيو"></nav>
     </div>
   </div>
 
   <div id="sections"></div>
-  <p class="empty" id="empty" hidden>لا توجد نتائج مطابقة — جرّب كلمة أخرى ☕</p>
+  <p class="empty" id="empty" hidden data-i18n="empty">لا توجد نتائج مطابقة — جرّب كلمة أخرى ☕</p>
   <noscript><p class="empty">يرجى تفعيل JavaScript لعرض المنيو.</p></noscript>
 </main>
 
 <footer class="footer">
   <img src="assets/img/logo-260.webp" width="260" height="266" alt="3M cafe" loading="lazy" decoding="async">
-  <p class="footer__ar">ليالي بيروت</p>
+  <p class="footer__ar" data-i18n="nights">ليالي بيروت</p>
   <p class="footer__en" lang="en" dir="ltr">Good Vibes... Great Coffee</p>
-  <button type="button" class="install-btn" id="installBtn" hidden><svg class="ico"><use href="#i-download"/></svg> أضف المنيو للشاشة الرئيسية</button>
-  <p class="footer__ios" id="iosHint" hidden>على iPhone: اضغط زر المشاركة ثم «إضافة إلى الشاشة الرئيسية».</p>
-  <p class="footer__note">بعد أول زيارة يعمل المنيو حتى بدون إنترنت.</p>
+  <button type="button" class="install-btn" id="installBtn" hidden><svg class="ico"><use href="#i-download"/></svg> <span data-i18n="install">أضف المنيو للشاشة الرئيسية</span></button>
+  <p class="footer__ios" id="iosHint" hidden data-i18n="ios">على iPhone: اضغط زر المشاركة ثم «إضافة إلى الشاشة الرئيسية».</p>
+  <p class="footer__note" data-i18n="note">بعد أول زيارة يعمل المنيو حتى بدون إنترنت.</p>
   <p class="footer__copy" lang="en" dir="ltr">© <span id="year"></span> 3M cafe</p>
 </footer>
 
 <div class="fabs">
-  <a class="fab fab--cats" href="#categories" aria-label="الرجوع إلى الأقسام"><svg class="ico"><use href="#i-grid"/></svg><span>الأقسام</span></a>
-  <button type="button" class="fab fab--top" id="toTop" aria-label="العودة لأعلى"><svg class="ico"><use href="#i-up"/></svg></button>
+  <a class="fab fab--cats" href="#categories" aria-label="الرجوع إلى الأقسام" data-i18n-aria="backCats"><svg class="ico"><use href="#i-grid"/></svg><span data-i18n="cats">الأقسام</span></a>
+  <button type="button" class="fab fab--top" id="toTop" aria-label="العودة لأعلى" data-i18n-aria="toTop"><svg class="ico"><use href="#i-up"/></svg></button>
 </div>
 
 <script src="js/app.js" defer></script>

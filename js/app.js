@@ -20,6 +20,45 @@
     .replace(/\s+/g, ' ')
     .trim();
 
+  /* ---------- Language ---------- */
+  const STR = {
+    ar: {
+      skip: 'انتقل للمنيو', offline: 'أنت غير متصل — المنيو يعمل من النسخة المحفوظة', updateMsg: 'نسخة جديدة من المنيو متاحة', update: 'تحديث',
+      nights: 'ليالي بيروت', explore: 'استكشف المنيو', exploreSub: 'Explore Our Menu', cats: 'الأقسام', catsSub: 'Our Menu',
+      searchLabel: 'ابحث في المنيو', searchPh: 'ابحث عن مشروب أو صنف…', clear: 'مسح البحث', empty: 'لا توجد نتائج مطابقة — جرّب كلمة أخرى ☕',
+      install: 'أضف المنيو للشاشة الرئيسية', ios: 'على iPhone: اضغط زر المشاركة ثم «إضافة إلى الشاشة الرئيسية».', note: 'بعد أول زيارة يعمل المنيو حتى بدون إنترنت.',
+      backCats: 'الرجوع إلى الأقسام', toTop: 'العودة لأعلى', scrollDown: 'انزل للأقسام', price: 'السعر', loadError: 'تعذّر تحميل المنيو. تأكد من اتصالك بالإنترنت ثم أعد المحاولة.',
+      langBtn: 'EN', langAria: 'Switch to English'
+    },
+    en: {
+      skip: 'Skip to menu', offline: 'You are offline — showing the saved menu', updateMsg: 'A new version of the menu is available', update: 'Update',
+      nights: 'Beirut Nights', explore: 'Explore Our Menu', exploreSub: 'استكشف المنيو', cats: 'Categories', catsSub: 'الأقسام',
+      searchLabel: 'Search the menu', searchPh: 'Search for a drink or item…', clear: 'Clear search', empty: 'No matching items — try another word ☕',
+      install: 'Add the menu to your home screen', ios: 'On iPhone: tap Share, then “Add to Home Screen”.', note: 'After your first visit, the menu works even without internet.',
+      backCats: 'Back to categories', toTop: 'Back to top', scrollDown: 'Scroll to categories', price: 'Price', loadError: 'Could not load the menu. Check your connection and try again.',
+      langBtn: 'عربي', langAria: 'التبديل إلى العربية'
+    }
+  };
+  let lang = 'ar';
+  try { if (localStorage.getItem('lang') === 'en') lang = 'en'; } catch (e) { /* storage unavailable */ }
+  const t = (k) => STR[lang][k];
+  const nm = (o) => (lang === 'en' && o.name_en) ? o.name_en : (o.name_ar || o.name);
+
+  function applyStatic() {
+    const root = document.documentElement;
+    root.lang = lang;
+    root.dir = lang === 'en' ? 'ltr' : 'rtl';
+    document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
+    document.querySelectorAll('[data-i18n-ph]').forEach((el) => { el.placeholder = t(el.dataset.i18nPh); });
+    document.querySelectorAll('[data-i18n-aria]').forEach((el) => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
+    const btn = $('#langBtn');
+    btn.textContent = t('langBtn');
+    btn.setAttribute('aria-label', t('langAria'));
+    btn.lang = lang === 'en' ? 'ar' : 'en';
+    btn.classList.toggle('is-ar', lang === 'en');
+  }
+  applyStatic();
+
   /* ---------- Loader ---------- */
   const loaderStart = performance.now();
   function hideLoader() {
@@ -34,7 +73,7 @@
 
   /* ---------- Render ---------- */
   let data = null;
-  const itemsIndex = []; // { li, nameEl, name, key }
+  let itemsIndex = []; // { li, nameEl, name, key }
 
   function countItems(cat) {
     return cat.groups ? cat.groups.reduce((n, g) => n + g.items.length, 0) : cat.items.length;
@@ -42,10 +81,10 @@
 
   function itemsHTML(items, iconName) {
     return `<ul class="items">${items.map((it, i) => `
-      <li class="card reveal" style="--i:${i % 8}" data-name="${esc(it.name)}">
+      <li class="card reveal" style="--i:${i % 8}" data-name="${esc(nm(it))}" data-alt="${esc(lang === 'en' ? it.name : (it.name_en || ''))}">
         <span class="card__icon">${icon(iconName)}</span>
-        <span class="card__name">${esc(it.name)}</span>
-        <span class="card__price" aria-label="السعر ${it.price}">${it.price}</span>
+        <span class="card__name">${esc(nm(it))}</span>
+        <span class="card__price" aria-label="${t('price')} ${it.price}">${it.price}</span>
       </li>`).join('')}</ul>`;
   }
 
@@ -53,7 +92,7 @@
     const imgs = [cat.image, cat.image2].filter(Boolean);
     const steam = cat.steam ? '<svg class="v-steam" viewBox="0 0 60 90" aria-hidden="true"><use href="#steam"/></svg>' : '';
     return `<div class="sec-visual reveal ${imgs.length > 1 ? 'two' : ''}">${steam}${imgs.map((src) =>
-      `<img src="${esc(src)}" alt="${esc(cat.name_ar)} — ${esc(cat.name_en)}" loading="lazy" decoding="async" width="400" height="400">`).join('')}</div>`;
+      `<img src="${esc(src)}" alt="${esc(nm(cat))}" loading="lazy" decoding="async" width="400" height="400">`).join('')}</div>`;
   }
 
   function render(menu) {
@@ -65,20 +104,20 @@
       <a class="cat-tile reveal" style="--i:${i}" href="#${esc(c.id)}">
         <span class="cat-tile__count">${countItems(c)}</span>
         <img class="cat-tile__img" src="${esc(c.image)}" alt="" loading="lazy" decoding="async" width="300" height="260">
-        <span class="cat-tile__ar">${esc(c.name_ar)}</span>
-        <span class="cat-tile__en" lang="en">${esc(c.name_en)}</span>
+        <span class="cat-tile__ar">${esc(nm(c))}</span>
+        <span class="cat-tile__en" lang="${lang === 'en' ? 'ar' : 'en'}">${esc(lang === 'en' ? c.name_ar : c.name_en)}</span>
       </a>`).join('');
 
     // Chips
     $('#chips').innerHTML = cats.map((c) =>
-      `<a class="chip" href="#${esc(c.id)}" data-id="${esc(c.id)}">${icon(c.icon)}<span>${esc(c.name_ar)}</span></a>`).join('');
+      `<a class="chip" href="#${esc(c.id)}" data-id="${esc(c.id)}">${icon(c.icon)}<span>${esc(nm(c))}</span></a>`).join('');
 
     // Sections
     $('#sections').innerHTML = cats.map((c) => {
       const body = c.groups
         ? c.groups.map((g) => `
           <div class="group">
-            <div class="group__head"><h3 class="group__title">${icon(g.icon || c.icon)}${esc(g.name_ar)}</h3></div>
+            <div class="group__head"><h3 class="group__title">${icon(g.icon || c.icon)}${esc(nm(g))}</h3></div>
             ${itemsHTML(g.items, g.icon || c.icon)}
           </div>`).join('')
         : itemsHTML(c.items, c.icon);
@@ -86,7 +125,7 @@
         <section class="menu-sec" id="${esc(c.id)}" aria-labelledby="h-${esc(c.id)}">
           <div class="plaque reveal">
             <span class="plaque__icon">${icon(c.icon)}</span>
-            <div><h2 class="plaque__ar" id="h-${esc(c.id)}">${esc(c.name_ar)}</h2><span class="plaque__en" lang="en">${esc(c.name_en)}</span></div>
+            <div><h2 class="plaque__ar" id="h-${esc(c.id)}">${esc(nm(c))}</h2><span class="plaque__en" lang="${lang === 'en' ? 'ar' : 'en'}">${esc(lang === 'en' ? c.name_ar : c.name_en)}</span></div>
           </div>
           <div class="sec-body">
             ${visualHTML(c)}
@@ -95,11 +134,12 @@
         </section>`;
     }).join('');
 
+    itemsIndex = [];
     document.querySelectorAll('.card').forEach((li) => {
       const nameEl = li.querySelector('.card__name');
       const sec = li.closest('.menu-sec');
       const cat = cats.find((c) => c.id === sec.id);
-      itemsIndex.push({ li, nameEl, name: li.dataset.name, key: norm(li.dataset.name + ' ' + cat.name_ar + ' ' + cat.name_en) });
+      itemsIndex.push({ li, nameEl, name: li.dataset.name, key: norm(li.dataset.name + ' ' + li.dataset.alt + ' ' + cat.name_ar + ' ' + cat.name_en) });
     });
 
     setupReveal();
@@ -220,9 +260,31 @@
       render(menu);
     })
     .catch(() => {
-      $('#sections').innerHTML = '<p class="empty">تعذّر تحميل المنيو. تأكد من اتصالك بالإنترنت ثم أعد المحاولة.</p>';
+      $('#sections').innerHTML = `<p class="empty">${t('loadError')}</p>`;
       hideLoader();
     });
+
+  /* ---------- Language switch ---------- */
+  $('#langBtn').addEventListener('click', () => {
+    lang = lang === 'ar' ? 'en' : 'ar';
+    try { localStorage.setItem('lang', lang); } catch (e) { /* ignore */ }
+    applyStatic();
+    if (!data) return;
+    // keep the reader on the same section
+    const anchor = Array.from(document.querySelectorAll('.menu-sec')).find((s) => s.getBoundingClientRect().bottom > 140);
+    const inMenu = anchor && window.scrollY > $('#sections').offsetTop - 200;
+    const anchorId = anchor && anchor.id;
+    const offset = anchor ? anchor.getBoundingClientRect().top : 0;
+    activeId = null;
+    render(data);
+    document.querySelectorAll('.reveal').forEach((r) => r.classList.add('is-in'));
+    const q = $('#search').value;
+    if (q) applySearch(q);
+    if (inMenu && anchorId) {
+      const el = document.getElementById(anchorId);
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: 'auto' });
+    }
+  });
 
   $('#year').textContent = new Date().getFullYear();
 
