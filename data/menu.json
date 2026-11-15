@@ -1,0 +1,318 @@
+{
+  "version": "2026-11-15",
+  "cafe": {
+    "name": "3M cafe",
+    "tagline_ar": "ليالي بيروت",
+    "tagline_en": "Good Vibes... Great Coffee"
+  },
+  "categories": [
+    {
+      "id": "hot-drinks",
+      "name_ar": "المشروبات الساخنة",
+      "name_en": "Hot Drinks",
+      "icon": "cup",
+      "image": "assets/img/sahlab.webp",
+      "steam": true,
+      "groups": [
+        {
+          "name_ar": "سحلب ومشروبات شتوية",
+          "icon": "snow",
+          "image": "assets/img/sahlab.webp",
+          "items": [
+            { "name": "سحلب", "price": 60 },
+            { "name": "سحلب مكسرات", "price": 75 },
+            { "name": "سحلب فواكه", "price": 85 },
+            { "name": "سحلب 3M", "price": 100 },
+            { "name": "حمص الشام", "price": 65 },
+            { "name": "بليلة مكسرات", "price": 80 }
+          ]
+        },
+        {
+          "name_ar": "هوت",
+          "icon": "cup",
+          "image": "assets/img/hot-choc.webp",
+          "items": [
+            { "name": "هوت سيدر", "price": 60 },
+            { "name": "هوت شوكلت", "price": 70 },
+            { "name": "هوت لوتس", "price": 70 },
+            { "name": "هوت كراميل ميكاتو", "price": 80 },
+            { "name": "هوت موكا", "price": 80 }
+          ]
+        },
+        {
+          "name_ar": "شاي وأعشاب",
+          "icon": "leaf",
+          "image": "assets/img/tea.webp",
+          "items": [
+            { "name": "شاي", "price": 20 },
+            { "name": "شاي أخضر", "price": 25 },
+            { "name": "شاي فواكه", "price": 30 },
+            { "name": "يانسون", "price": 25 },
+            { "name": "نعناع", "price": 25 },
+            { "name": "قرفة", "price": 25 },
+            { "name": "جنزبيل", "price": 25 },
+            { "name": "أعشاب", "price": 30 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coffee",
+      "name_ar": "القهوة",
+      "name_en": "Coffee",
+      "icon": "bean",
+      "image": "assets/img/coffee-hot.webp",
+      "steam": true,
+      "groups": [
+        {
+          "name_ar": "ساخنة",
+          "icon": "cup",
+          "image": "assets/img/coffee-hot.webp",
+          "items": [
+            { "name": "إسبريسو سنجل", "price": 45 },
+            { "name": "إسبريسو دبل", "price": 60 },
+            { "name": "أمريكانو", "price": 65 },
+            { "name": "لاتيه", "price": 70 },
+            { "name": "سبانش لاتيه", "price": 80 },
+            { "name": "كابتشينو", "price": 80 },
+            { "name": "فلات وايت", "price": 90 },
+            { "name": "نسكافيه", "price": 70 },
+            { "name": "كورتادو", "price": 75 },
+            { "name": "قهوة سنجل", "price": 40 },
+            { "name": "قهوة دبل", "price": 60 },
+            { "name": "قهوة فرنساوي", "price": 50 },
+            { "name": "قهوة بندق", "price": 70 },
+            { "name": "قهوة نوتيلا", "price": 70 }
+          ]
+        },
+        {
+          "name_ar": "آيس كوفي",
+          "icon": "iced",
+          "image": "assets/img/iced-coffee.webp",
+          "items": [
+            { "name": "آيس لاتيه", "price": 75 },
+            { "name": "آيس سبانش لاتيه", "price": 85 },
+            { "name": "آيس موكا", "price": 85 },
+            { "name": "آيس وايت موكا", "price": 85 },
+            { "name": "آيس كراميل ميكاتو", "price": 90 },
+            { "name": "آيس كابتشينو", "price": 85 },
+            { "name": "آيس أمريكانو", "price": 65 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mojito",
+      "name_ar": "موهيتو",
+      "name_en": "Mojito",
+      "icon": "mojito",
+      "image": "assets/img/mojito.webp",
+      "items": [
+        { "name": "موهيتو كلاسيك", "price": 60 },
+        { "name": "موهيتو فليفر", "price": 70 },
+        { "name": "موهيتو بينا كولادا", "price": 85 },
+        { "name": "موهيتو إنرجي", "price": 90 },
+        { "name": "موهيتو ريد بول", "price": 100 },
+        { "name": "موهيتو ريد بول فليفر", "price": 110 },
+        { "name": "موهيتو 3M", "price": 90 }
+      ]
+    },
+    {
+      "id": "milkshake",
+      "name_ar": "ميلك شيك",
+      "name_en": "Milkshake",
+      "icon": "shake",
+      "image": "assets/img/milkshake.webp",
+      "items": [
+        { "name": "ميلك فانيليا", "price": 80 },
+        { "name": "ميلك شوكلت", "price": 90 },
+        { "name": "ميلك نوتيلا", "price": 100 },
+        { "name": "ميلك لوتس", "price": 100 },
+        { "name": "ميلك كراميل", "price": 90 },
+        { "name": "ميلك بيستاشيو", "price": 100 },
+        { "name": "ميلك فراولة", "price": 85 },
+        { "name": "ميلك بلوبيرى", "price": 80 },
+        { "name": "ميلك أوريو", "price": 90 }
+      ]
+    },
+    {
+      "id": "soft-drinks",
+      "name_ar": "مشروبات غازية",
+      "name_en": "Soft Drinks",
+      "icon": "can",
+      "image": "assets/img/soft-drinks.webp",
+      "items": [
+        { "name": "ماى", "price": 10 },
+        { "name": "كانز", "price": 35 },
+        { "name": "بريل", "price": 40 },
+        { "name": "ريدبول", "price": 80 }
+      ]
+    },
+    {
+      "id": "cocktails",
+      "name_ar": "كوكتيلات",
+      "name_en": "Cocktails",
+      "icon": "cocktail",
+      "image": "assets/img/cocktail.webp",
+      "items": [
+        { "name": "شيرى كميل", "price": 70 },
+        { "name": "شيرى كولد", "price": 70 },
+        { "name": "مانجو باشون", "price": 85 },
+        { "name": "مانجو خوخ", "price": 85 },
+        { "name": "باربي كوكتيل", "price": 90 },
+        { "name": "بينك روز", "price": 90 },
+        { "name": "باور 3M", "price": 120 },
+        { "name": "مانجا كيوى", "price": 90 },
+        { "name": "بينا كولادا", "price": 85 },
+        { "name": "بانجو", "price": 85 },
+        { "name": "كوكتيل 3M", "price": 100 }
+      ]
+    },
+    {
+      "id": "croissant",
+      "name_ar": "كرواسون",
+      "name_en": "Croissant",
+      "icon": "croissant",
+      "image": "assets/img/croissant.webp",
+      "items": [
+        { "name": "كرواسون شيدر", "price": 70 },
+        { "name": "كرواسون ميكس جبن", "price": 80 },
+        { "name": "كرواسون تركي شيدر", "price": 85 },
+        { "name": "كرواسون شوكلت", "price": 65 },
+        { "name": "كرواسون عسل", "price": 60 }
+      ]
+    },
+    {
+      "id": "waffle",
+      "name_ar": "وافل",
+      "name_en": "Waffle",
+      "icon": "waffle",
+      "image": "assets/img/waffle.webp",
+      "items": [
+        { "name": "وافل شوكلت", "price": 80 },
+        { "name": "وافل كراميل", "price": 80 },
+        { "name": "وافل نوتيلا", "price": 100 },
+        { "name": "وافل بيستاشيو", "price": 110 },
+        { "name": "وافل لوتس", "price": 100 },
+        { "name": "وافل فورسيزون", "price": 120 }
+      ]
+    },
+    {
+      "id": "ice-cream",
+      "name_ar": "آيس كريم",
+      "name_en": "Ice Cream",
+      "icon": "icecream",
+      "image": "assets/img/icecream.webp",
+      "items": [
+        { "name": "آيس كريم كلاسيك", "price": 55 },
+        { "name": "آيس كريم باشون", "price": 70 },
+        { "name": "آيس كريم سوفت", "price": 70 },
+        { "name": "آيس كريم ميكس بيري", "price": 75 }
+      ]
+    },
+    {
+      "id": "sweets",
+      "name_ar": "حلويات",
+      "name_en": "Sweets",
+      "icon": "cake",
+      "image": "assets/img/sweets.webp",
+      "items": [
+        { "name": "مولتن كيك", "price": 100 },
+        { "name": "تشيز كيك", "price": 100 },
+        { "name": "سينابون", "price": 90 },
+        { "name": "ريد فيلفت", "price": 90 },
+        { "name": "شوكلت فادج", "price": 85 },
+        { "name": "براونيز", "price": 100 },
+        { "name": "تيراميسو", "price": 85 }
+      ]
+    },
+    {
+      "id": "add-ons",
+      "name_ar": "إضافات",
+      "name_en": "Add-ons",
+      "icon": "plus",
+      "image": "assets/img/addons.webp",
+      "items": [
+        { "name": "لبن", "price": 25 },
+        { "name": "فلفل", "price": 20 },
+        { "name": "صوص", "price": 30 },
+        { "name": "عسل", "price": 20 },
+        { "name": "آيس كريم", "price": 30 }
+      ]
+    },
+    {
+      "id": "shisha",
+      "name_ar": "الشيشة",
+      "name_en": "Shisha",
+      "icon": "shisha",
+      "image": "assets/img/shisha.webp",
+      "steam": true,
+      "items": [
+        { "name": "فاخر", "price": 70 },
+        { "name": "فاخر 3M", "price": 120 },
+        { "name": "إسكندراني", "price": 40 },
+        { "name": "معسل عادي", "price": 20 },
+        { "name": "لى طبى", "price": 10, "review": "كلمة غير مألوفة — منقولة حرفياً من المنيو، راجعها" }
+      ]
+    },
+    {
+      "id": "frappe",
+      "name_ar": "فرابيه",
+      "name_en": "Frappé",
+      "icon": "frappe",
+      "image": "assets/img/frappe-choc.webp",
+      "image2": "assets/img/frappe-pist.webp",
+      "items": [
+        { "name": "فرابيه كلاسيك", "price": 75 },
+        { "name": "فرابيه موكا", "price": 85 },
+        { "name": "فرابيه كراميل", "price": 85 },
+        { "name": "فرابيه نوتيلا", "price": 90 },
+        { "name": "فرابيه لوتس", "price": 90 },
+        { "name": "فرابيه بستاشيو", "price": 90 },
+        { "name": "فرابيه وايت موكا", "price": 85 }
+      ]
+    },
+    {
+      "id": "smoothies",
+      "name_ar": "سموزي",
+      "name_en": "Smoothies",
+      "icon": "frappe",
+      "image": "assets/img/smoothie-mango.webp",
+      "image2": "assets/img/smoothie-melon.webp",
+      "items": [
+        { "name": "سموزي ليمون", "price": 60 },
+        { "name": "سموزي ليمون نعناع", "price": 65 },
+        { "name": "سموزي فراولة", "price": 70 },
+        { "name": "سموزي بطيخ", "price": 70, "review": "مكرر في المنيو بسعرين (70 و60)" },
+        { "name": "سموزي ميكس بيري", "price": 85 },
+        { "name": "سموزي مانجا", "price": 80 },
+        { "name": "سموزي كيوي", "price": 85 },
+        { "name": "سموزي مانجا باشون", "price": 90 },
+        { "name": "سموزي كيوي أناناس", "price": 90 },
+        { "name": "سموزي مانجا خوخ", "price": 90 },
+        { "name": "سموزي خوخ", "price": 70 },
+        { "name": "سموزي بطيخ", "price": 60, "review": "مكرر في المنيو بسعرين (70 و60)" }
+      ]
+    },
+    {
+      "id": "fresh-juices",
+      "name_ar": "عصائر فريش",
+      "name_en": "Fresh Juices",
+      "icon": "juice",
+      "image": "assets/img/juice-orange.webp",
+      "image2": "assets/img/juice-guava.webp",
+      "items": [
+        { "name": "مانجا", "price": 70 },
+        { "name": "جوافة", "price": 70 },
+        { "name": "فراولة", "price": 70 },
+        { "name": "بلح", "price": 85 },
+        { "name": "ليمون", "price": 60 },
+        { "name": "ليمون نعناع", "price": 65 },
+        { "name": "بطيخ", "price": 70 },
+        { "name": "أناناس", "price": 70 },
+        { "name": "كيوي", "price": 85 },
+        { "name": "برتقال", "price": 70 }
+      ]
+    }
+  ]
+}
