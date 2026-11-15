@@ -62,12 +62,13 @@
   <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
   <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 12.5a10 10 0 0 1 4.3-2.4M12 8.4a10 10 0 0 1 7 4.1M2 8.8a15 15 0 0 1 4.6-2.9M10.5 4.6A15 15 0 0 1 22 8.8"/><circle cx="12" cy="20" r=".8"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
   <symbol id="steam" viewBox="0 0 60 90"><g fill="none" stroke="#fff" stroke-linecap="round" filter="url(#steamBlur)"><path class="s1" d="M20 88c-10-14 10-22 0-38s10-24 2-40" stroke-width="5"/><path class="s2" d="M32 88c-8-12 8-20 0-34s8-22 2-36" stroke-width="4"/><path class="s3" d="M44 88c-10-14 10-20 0-36s8-20 2-32" stroke-width="5"/></g></symbol>
 </svg>
 
 <!-- Loader -->
-<div class="loader" id="loader" role="status" aria-label="جاري التحميل">
+<div class="loader" id="loader" role="status" aria-label="3M cafe">
   <div class="loader__cup" aria-hidden="true">
     <svg class="loader__steam" viewBox="0 0 60 90"><use href="#steam"/></svg>
     <svg viewBox="0 0 120 90" class="loader__svg">
@@ -83,7 +84,7 @@
 
 <a class="skip" href="#menu" data-i18n="skip">انتقل للمنيو</a>
 
-<button type="button" class="lang-btn" id="langBtn" aria-label="Switch to English" lang="en">EN</button>
+<button type="button" class="lang-btn" id="langBtn" aria-label="التبديل إلى الإنجليزية"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg><span id="langLabel">إنجليزي</span></button>
 
 <!-- Offline / update / install toasts -->
 <div class="pill pill--offline" id="offlinePill" hidden><svg class="ico"><use href="#i-wifi-off"/></svg><span data-i18n="offline">أنت غير متصل — المنيو يعمل من النسخة المحفوظة</span></div>
@@ -113,10 +114,9 @@
       <img class="hero__logo" src="assets/img/logo-520.webp" srcset="assets/img/logo-260.webp 260w, assets/img/logo-520.webp 520w" sizes="(max-width: 600px) 220px, 280px" width="520" height="531" alt="3M cafe" fetchpriority="high">
     </div>
     <h1 class="hero__title"><span class="sr-only">3M cafe — </span><span data-i18n="nights">ليالي بيروت</span></h1>
-    <p class="hero__script" lang="en" dir="ltr">Good Vibes... Great Coffee</p>
+    <p class="hero__script" data-i18n="slogan">مزاج حلو... قهوة أحلى</p>
     <a class="plaque-btn" href="#categories">
       <span class="plaque-btn__ar" data-i18n="explore">استكشف المنيو</span>
-      <span class="plaque-btn__en" data-i18n="exploreSub">Explore Our Menu</span>
     </a>
   </div>
 
@@ -131,7 +131,6 @@
   <section class="cats" id="categories" aria-labelledby="catsTitle">
     <div class="ornament-title">
       <h2 id="catsTitle" data-i18n="cats">الأقسام</h2>
-      <p data-i18n="catsSub">Our Menu</p>
     </div>
     <div class="cats__grid" id="catsGrid"></div>
   </section>
@@ -156,11 +155,11 @@
 <footer class="footer">
   <img src="assets/img/logo-260.webp" width="260" height="266" alt="3M cafe" loading="lazy" decoding="async">
   <p class="footer__ar" data-i18n="nights">ليالي بيروت</p>
-  <p class="footer__en" lang="en" dir="ltr">Good Vibes... Great Coffee</p>
+  <p class="footer__en" data-i18n="slogan">مزاج حلو... قهوة أحلى</p>
   <button type="button" class="install-btn" id="installBtn" hidden><svg class="ico"><use href="#i-download"/></svg> <span data-i18n="install">أضف المنيو للشاشة الرئيسية</span></button>
   <p class="footer__ios" id="iosHint" hidden data-i18n="ios">على iPhone: اضغط زر المشاركة ثم «إضافة إلى الشاشة الرئيسية».</p>
   <p class="footer__note" data-i18n="note">بعد أول زيارة يعمل المنيو حتى بدون إنترنت.</p>
-  <p class="footer__copy" lang="en" dir="ltr">© <span id="year"></span> 3M cafe</p>
+  <p class="footer__copy">© <span id="year"></span> 3M cafe</p>
 </footer>
 
 <div class="fabs">

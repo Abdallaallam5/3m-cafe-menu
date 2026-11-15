@@ -24,19 +24,19 @@
   const STR = {
     ar: {
       skip: 'انتقل للمنيو', offline: 'أنت غير متصل — المنيو يعمل من النسخة المحفوظة', updateMsg: 'نسخة جديدة من المنيو متاحة', update: 'تحديث',
-      nights: 'ليالي بيروت', explore: 'استكشف المنيو', exploreSub: 'Explore Our Menu', cats: 'الأقسام', catsSub: 'Our Menu',
+      nights: 'ليالي بيروت', slogan: 'مزاج حلو... قهوة أحلى', explore: 'استكشف المنيو', cats: 'الأقسام', title: '3M cafe | ليالي بيروت — المنيو',
       searchLabel: 'ابحث في المنيو', searchPh: 'ابحث عن مشروب أو صنف…', clear: 'مسح البحث', empty: 'لا توجد نتائج مطابقة — جرّب كلمة أخرى ☕',
       install: 'أضف المنيو للشاشة الرئيسية', ios: 'على iPhone: اضغط زر المشاركة ثم «إضافة إلى الشاشة الرئيسية».', note: 'بعد أول زيارة يعمل المنيو حتى بدون إنترنت.',
       backCats: 'الرجوع إلى الأقسام', toTop: 'العودة لأعلى', scrollDown: 'انزل للأقسام', price: 'السعر', loadError: 'تعذّر تحميل المنيو. تأكد من اتصالك بالإنترنت ثم أعد المحاولة.',
-      langBtn: 'EN', langAria: 'Switch to English'
+      langBtn: 'إنجليزي', langAria: 'التبديل إلى الإنجليزية'
     },
     en: {
       skip: 'Skip to menu', offline: 'You are offline — showing the saved menu', updateMsg: 'A new version of the menu is available', update: 'Update',
-      nights: 'Beirut Nights', explore: 'Explore Our Menu', exploreSub: 'استكشف المنيو', cats: 'Categories', catsSub: 'الأقسام',
+      nights: 'Beirut Nights', slogan: 'Good Vibes... Great Coffee', explore: 'Explore Our Menu', cats: 'Categories', title: '3M cafe | Beirut Nights — Menu',
       searchLabel: 'Search the menu', searchPh: 'Search for a drink or item…', clear: 'Clear search', empty: 'No matching items — try another word ☕',
       install: 'Add the menu to your home screen', ios: 'On iPhone: tap Share, then “Add to Home Screen”.', note: 'After your first visit, the menu works even without internet.',
       backCats: 'Back to categories', toTop: 'Back to top', scrollDown: 'Scroll to categories', price: 'Price', loadError: 'Could not load the menu. Check your connection and try again.',
-      langBtn: 'عربي', langAria: 'التبديل إلى العربية'
+      langBtn: 'Arabic', langAria: 'Switch to Arabic'
     }
   };
   let lang = 'ar';
@@ -52,10 +52,9 @@
     document.querySelectorAll('[data-i18n-ph]').forEach((el) => { el.placeholder = t(el.dataset.i18nPh); });
     document.querySelectorAll('[data-i18n-aria]').forEach((el) => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
     const btn = $('#langBtn');
-    btn.textContent = t('langBtn');
+    $('#langLabel').textContent = t('langBtn');
     btn.setAttribute('aria-label', t('langAria'));
-    btn.lang = lang === 'en' ? 'ar' : 'en';
-    btn.classList.toggle('is-ar', lang === 'en');
+    document.title = t('title');
   }
   applyStatic();
 
@@ -105,7 +104,6 @@
         <span class="cat-tile__count">${countItems(c)}</span>
         <img class="cat-tile__img" src="${esc(c.image)}" alt="" loading="lazy" decoding="async" width="300" height="260">
         <span class="cat-tile__ar">${esc(nm(c))}</span>
-        <span class="cat-tile__en" lang="${lang === 'en' ? 'ar' : 'en'}">${esc(lang === 'en' ? c.name_ar : c.name_en)}</span>
       </a>`).join('');
 
     // Chips
@@ -125,7 +123,7 @@
         <section class="menu-sec" id="${esc(c.id)}" aria-labelledby="h-${esc(c.id)}">
           <div class="plaque reveal">
             <span class="plaque__icon">${icon(c.icon)}</span>
-            <div><h2 class="plaque__ar" id="h-${esc(c.id)}">${esc(nm(c))}</h2><span class="plaque__en" lang="${lang === 'en' ? 'ar' : 'en'}">${esc(lang === 'en' ? c.name_ar : c.name_en)}</span></div>
+            <div><h2 class="plaque__ar" id="h-${esc(c.id)}">${esc(nm(c))}</h2></div>
           </div>
           <div class="sec-body">
             ${visualHTML(c)}

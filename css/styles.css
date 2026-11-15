@@ -176,7 +176,7 @@ button{font:inherit;cursor:pointer}
   background:linear-gradient(180deg,#2b180e,#3a2113);box-shadow:0 8px 20px -10px rgba(0,0,0,.5);
   border-bottom:1px solid rgba(201,154,59,.5)}
 .toolbar__inner{max-width:1180px;margin:0 auto}
-.search{margin-inline-end:66px!important}
+.search{margin-inline-end:116px!important}
 .search{display:flex;align-items:center;gap:8px;margin:0 12px 8px;padding:0 14px;height:44px;border-radius:999px;
   background:rgba(246,232,210,.1);border:1px solid rgba(201,154,59,.5);color:var(--gold-light)}
 .search input{flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--cream);font:inherit;font-size:16px;outline:none}
@@ -277,7 +277,9 @@ mark{background:rgba(201,154,59,.35);color:inherit;border-radius:4px;padding:0 2
   border:1.5px solid var(--gold);background:linear-gradient(180deg,#5a3520,#2b180e);color:var(--gold-light);font-weight:700;font-size:.95rem;letter-spacing:.06em;
   box-shadow:0 8px 18px -8px rgba(0,0,0,.55);transition:transform .3s var(--ease)}
 .lang-btn:hover{transform:translateY(-2px)}
-.lang-btn.is-ar{font-family:var(--font-display);font-size:1.05rem;letter-spacing:0}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-ar);letter-spacing:0;font-size:.9rem}
+.lang-btn .ico{width:18px;height:18px}
+html[lang="ar"] .hero__script,html[lang="ar"] .footer__en{font-family:var(--font-display);transform:none;word-spacing:normal;font-size:clamp(1.25rem,5.5vw,1.6rem)}
 html[lang="en"] .card__name,html[lang="en"] .cat-tile__ar,html[lang="en"] .plaque__ar,html[lang="en"] .group__title{font-family:var(--font-ar)}
 html[lang="en"] .plaque__ar{font-family:var(--font-en);letter-spacing:.04em}
 html[lang="en"] .hero__title{font-family:var(--font-en);font-size:clamp(1.8rem,8.4vw,3.4rem);white-space:nowrap}
@@ -302,7 +304,7 @@ html[lang="en"] .hero__title{font-family:var(--font-en);font-size:clamp(1.8rem,8
   :root{--toolbar-h:66px}
   .toolbar__inner{display:flex;align-items:center;gap:12px;padding:0 12px}
   .search{margin:0;width:300px;flex:none}
-  .toolbar__inner{padding-inline-end:70px}
+  .toolbar__inner{padding-inline-end:124px}
   .toolbar .search{margin-inline-end:0!important}
   .chips{padding:2px 0 4px;flex:1}
   .cats__grid{grid-template-columns:repeat(5,1fr)}
